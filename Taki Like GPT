@@ -1,0 +1,424 @@
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study With Taki 247 - AI Tutor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .chat-container {
+            height: calc(100vh - 200px);
+        }
+        .message-animation {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .subject-btn {
+            transition: all 0.2s ease;
+        }
+        .subject-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <i class="fas fa-graduation-cap text-3xl"></i>
+                <h1 class="text-2xl font-bold">Study With Taki 247</h1>
+            </div>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#" class="hover:text-indigo-200 transition">Home</a></li>
+                    <li><a href="#lectures" class="hover:text-indigo-200 transition">Lectures</a></li>
+                    <li><a href="#resources" class="hover:text-indigo-200 transition">Resources</a></li>
+                    <li><a href="#about" class="hover:text-indigo-200 transition">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Your Personal AI Tutor for Class 11-12</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Ask any academic question and get instant answers with explanations, examples, and relevant video lectures.
+            </p>
+        </section>
+
+        <!-- Chat Interface -->
+        <section class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+            <div class="p-4 bg-indigo-50 border-b border-indigo-100">
+                <h3 class="text-lg font-semibold text-indigo-700">AI Study Assistant</h3>
+            </div>
+            
+            <div class="chat-container overflow-y-auto p-4 space-y-4" id="chat-window">
+                <!-- Welcome message -->
+                <div class="flex items-start space-x-3 message-animation">
+                    <div class="bg-indigo-100 p-3 rounded-lg rounded-tl-none">
+                        <p class="text-gray-800">Hello! I'm your AI study assistant. Ask me any question from Physics, Chemistry, Mathematics, Biology, or English for Class 11-12, and I'll provide detailed answers with examples.</p>
+                    </div>
+                </div>
+                
+                <!-- Example questions -->
+                <div class="flex items-start space-x-3 message-animation">
+                    <div class="bg-indigo-50 p-3 rounded-lg rounded-tl-none">
+                        <p class="text-gray-800 font-medium mb-2">Try asking:</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <button onclick="askQuestion(this)" class="subject-btn bg-white hover:bg-indigo-100 text-indigo-600 px-3 py-2 rounded-lg text-sm text-left transition">
+                                Explain Newton's Third Law with examples
+                            </button>
+                            <button onclick="askQuestion(this)" class="subject-btn bg-white hover:bg-indigo-100 text-indigo-600 px-3 py-2 rounded-lg text-sm text-left transition">
+                                What is the difference between mitosis and meiosis?
+                            </button>
+                            <button onclick="askQuestion(this)" class="subject-btn bg-white hover:bg-indigo-100 text-indigo-600 px-3 py-2 rounded-lg text-sm text-left transition">
+                                Solve this quadratic equation: x² - 5x + 6 = 0
+                            </button>
+                            <button onclick="askQuestion(this)" class="subject-btn bg-white hover:bg-indigo-100 text-indigo-600 px-3 py-2 rounded-lg text-sm text-left transition">
+                                Explain the concept of mole in chemistry
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4 border-t border-gray-200 bg-gray-50">
+                <form id="question-form" class="flex space-x-2">
+                    <input 
+                        type="text" 
+                        id="user-question" 
+                        placeholder="Ask any Class 11-12 question..." 
+                        class="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        autocomplete="off"
+                    >
+                    <button 
+                        type="submit" 
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg transition flex items-center"
+                    >
+                        <i class="fas fa-paper-plane mr-2"></i> Ask
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Online Lectures Section -->
+        <section id="lectures" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Recommended Video Lectures</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Physics Wallah -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <iframe 
+                            src="https://www.youtube.com/embed/videoseries?list=PLYgZ1_jNeMVYgKXQpQ9QwCbG4Yq7HvPkz" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            class="w-full h-48"
+                        ></iframe>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">Physics Wallah - Class 11 Physics</h3>
+                        <p class="text-gray-600 text-sm">Complete Class 11 Physics lectures with problem solving</p>
+                    </div>
+                </div>
+                
+                <!-- Unacademy -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <iframe 
+                            src="https://www.youtube.com/embed/videoseries?list=PLyjgQq7H2jQXqQ1j_7QISkQfqJ3C7D1kD" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            class="w-full h-48"
+                        ></iframe>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">Unacademy - Class 12 Chemistry</h3>
+                        <p class="text-gray-600 text-sm">Detailed explanations of organic chemistry concepts</p>
+                    </div>
+                </div>
+                
+                <!-- Next Topper Science -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <iframe 
+                            src="https://www.youtube.com/embed/videoseries?list=PLyjgQq7H2jQXqQ1j_7QISkQfqJ3C7D1kD" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            class="w-full h-48"
+                        ></iframe>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">Next Topper Science - Biology</h3>
+                        <p class="text-gray-600 text-sm">Human physiology and plant biology explained</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Study Resources</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-indigo-600 mb-4">
+                        <i class="fas fa-file-pdf text-4xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Sample Papers</h3>
+                    <p class="text-gray-600 mb-4">Download CBSE and state board sample papers with solutions</p>
+                    <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-200 transition">
+                        Download
+                    </button>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-indigo-600 mb-4">
+                        <i class="fas fa-book text-4xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Revision Notes</h3>
+                    <p class="text-gray-600 mb-4">Chapter-wise concise notes for quick revision before exams</p>
+                    <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-200 transition">
+                        View Notes
+                    </button>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-indigo-600 mb-4">
+                        <i class="fas fa-question-circle text-4xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Important Questions</h3>
+                    <p class="text-gray-600 mb-4">Most frequently asked questions with detailed solutions</p>
+                    <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-200 transition">
+                        Practice Now
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="about" class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Study With Taki 247</h3>
+                    <p class="text-gray-400">Your personal AI tutor for Class 11-12 students, providing instant answers, explanations, and learning resources.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#lectures" class="text-gray-400 hover:text-white transition">Video Lectures</a></li>
+                        <li><a href="#resources" class="text-gray-400 hover:text-white transition">Study Resources</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Ask Questions</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Subjects</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Physics</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Chemistry</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Mathematics</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Biology</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400"><i class="fas fa-envelope mr-2"></i> contact@studywithtaki247.com</li>
+                        <li class="text-gray-400"><i class="fas fa-phone mr-2"></i> +91 9876543210</li>
+                        <li class="flex space-x-4 mt-4">
+                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Study With Taki 247. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Chat functionality
+        const chatWindow = document.getElementById('chat-window');
+        const questionForm = document.getElementById('question-form');
+        const userQuestionInput = document.getElementById('user-question');
+        
+        // Function to add a message to the chat
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `flex items-start space-x-3 message-animation`;
+            
+            if (isUser) {
+                messageDiv.innerHTML = `
+                    <div class="flex-shrink-0">
+                        <div class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="bg-indigo-600 text-white p-3 rounded-lg rounded-tr-none max-w-3xl">
+                        <p>${message}</p>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="flex-shrink-0">
+                        <div class="bg-gray-200 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <div class="bg-gray-200 text-gray-800 p-3 rounded-lg rounded-tl-none max-w-3xl">
+                        <p>${message}</p>
+                    </div>
+                `;
+            }
+            
+            chatWindow.appendChild(messageDiv);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+        
+        // Function to generate AI response
+        function generateResponse(question) {
+            // This is a simplified version - in a real app, you'd call an API
+            const responses = {
+                "explain newton's third law with examples": `
+                    <strong>Newton's Third Law of Motion</strong> states that for every action, there is an equal and opposite reaction.<br><br>
+                    <strong>Examples:</strong><br>
+                    1. <strong>Walking:</strong> When you walk, your foot pushes backward on the ground (action), and the ground pushes forward on your foot (reaction).<br>
+                    2. <strong>Rocket Launch:</strong> The rocket pushes gases downward (action), and the gases push the rocket upward (reaction).<br>
+                    3. <strong>Swimming:</strong> You push water backward (action), and the water pushes you forward (reaction).<br><br>
+                    <strong>Related Video:</strong> <a href="https://www.youtube.com/watch?v=8bTdMmNZm2M" class="text-indigo-600 underline" target="_blank">Watch explanation on Physics Wallah</a>
+                `,
+                "what is the difference between mitosis and meiosis": `
+                    <strong>Differences between Mitosis and Meiosis:</strong><br><br>
+                    <strong>1. Purpose:</strong><br>
+                    - Mitosis: Growth and repair (asexual reproduction)<br>
+                    - Meiosis: Production of gametes (sexual reproduction)<br><br>
+                    <strong>2. Number of Divisions:</strong><br>
+                    - Mitosis: 1 division<br>
+                    - Meiosis: 2 divisions<br><br>
+                    <strong>3. Daughter Cells:</strong><br>
+                    - Mitosis: 2 diploid cells identical to parent<br>
+                    - Meiosis: 4 haploid cells genetically different<br><br>
+                    <strong>Video Resource:</strong> <a href="https://www.youtube.com/watch?v=zrKdz93WlVk" class="text-indigo-600 underline" target="_blank">Meiosis vs Mitosis Explained</a>
+                `,
+                "solve this quadratic equation: x² - 5x + 6 = 0": `
+                    <strong>Solution:</strong><br>
+                    Given equation: x² - 5x + 6 = 0<br><br>
+                    <strong>Step 1:</strong> Factor the quadratic equation<br>
+                    We look for two numbers that multiply to 6 (constant term) and add to -5 (coefficient of x).<br>
+                    These numbers are -2 and -3.<br><br>
+                    <strong>Step 2:</strong> Rewrite the equation<br>
+                    x² - 2x - 3x + 6 = 0<br><br>
+                    <strong>Step 3:</strong> Factor by grouping<br>
+                    x(x - 2) - 3(x - 2) = 0<br>
+                    (x - 2)(x - 3) = 0<br><br>
+                    <strong>Step 4:</strong> Set each factor equal to zero<br>
+                    x - 2 = 0 → x = 2<br>
+                    x - 3 = 0 → x = 3<br><br>
+                    <strong>Solution:</strong> x = 2 or x = 3<br><br>
+                    <strong>Practice More:</strong> <a href="https://www.youtube.com/watch?v=7QpB1TwAg1E" class="text-indigo-600 underline" target="_blank">Quadratic Equations Tutorial</a>
+                `,
+                "explain the concept of mole in chemistry": `
+                    <strong>The Mole Concept:</strong><br>
+                    A mole is the SI unit for amount of substance. One mole contains exactly 6.022×10²³ elementary entities (Avogadro's number).<br><br>
+                    <strong>Key Points:</strong><br>
+                    1. <strong>Atomic Mass:</strong> 1 mole of an element = atomic mass in grams<br>
+                    2. <strong>Molecular Mass:</strong> 1 mole of a compound = molecular mass in grams<br>
+                    3. <strong>Volume:</strong> 1 mole of any gas at STP occupies 22.4 liters<br><br>
+                    <strong>Example:</strong><br>
+                    - 1 mole of Carbon (C) = 12 grams (atomic mass of carbon)<br>
+                    - 1 mole of Water (H₂O) = 18 grams (2×1 + 16)<br><br>
+                    <strong>Video Explanation:</strong> <a href="https://www.youtube.com/watch?v=Y6kc-NKQZv4" class="text-indigo-600 underline" target="_blank">Mole Concept Simplified</a>
+                `
+            };
+            
+            const lowerQuestion = question.toLowerCase().trim();
+            if (responses[lowerQuestion]) {
+                return responses[lowerQuestion];
+            } else {
+                return `I'm your AI study assistant for Class 11-12 subjects. I can help with:<br><br>
+                - Physics concepts and numerical problems<br>
+                - Chemistry equations and mole concept<br>
+                - Mathematics problems and solutions<br>
+                - Biology diagrams and processes<br>
+                - English grammar and writing<br><br>
+                Try asking more specific questions like the examples above, or select a subject to focus on.`;
+            }
+        }
+        
+        // Function to handle asking a question
+        function askQuestion(button) {
+            const question = button.textContent.trim();
+            userQuestionInput.value = question;
+            questionForm.dispatchEvent(new Event('submit'));
+        }
+        
+        // Handle form submission
+        questionForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const question = userQuestionInput.value.trim();
+            
+            if (question) {
+                // Add user question to chat
+                addMessage(question, true);
+                
+                // Clear input
+                userQuestionInput.value = '';
+                
+                // Show typing indicator
+                const typingIndicator = document.createElement('div');
+                typingIndicator.className = 'flex items-start space-x-3';
+                typingIndicator.innerHTML = `
+                    <div class="flex-shrink-0">
+                        <div class="bg-gray-200 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <div class="bg-gray-200 text-gray-800 p-3 rounded-lg rounded-tl-none">
+                        <div class="flex space-x-2">
+                            <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
+                            <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                            <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                        </div>
+                    </div>
+                `;
+                chatWindow.appendChild(typingIndicator);
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+                
+                // Simulate AI thinking time
+                setTimeout(() => {
+                    // Remove typing indicator
+                    chatWindow.removeChild(typingIndicator);
+                    
+                    // Add AI response
+                    const response = generateResponse(question);
+                    addMessage(response);
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>
+```
